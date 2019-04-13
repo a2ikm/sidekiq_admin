@@ -1,0 +1,37 @@
+<%= form_with(model: sidekiq_plan, local: true) do |form| %>
+  <% if sidekiq_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sidekiq_plan.errors.count, "error") %> prohibited this sidekiq_plan from being saved:</h2>
+
+      <ul>
+      <% sidekiq_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :label %>
+    <%= form.text_field :label %>
+  </div>
+
+  <div class="field">
+    <%= form.label :worker_name %>
+    <%= form.text_field :worker_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :jid %>
+    <%= form.text_field :jid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

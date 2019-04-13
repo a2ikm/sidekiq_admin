@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sidekiq Plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Worker name</th>
+      <th>Jid</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sidekiq_plans.each do |sidekiq_plan| %>
+      <tr>
+        <td><%= sidekiq_plan.label %></td>
+        <td><%= sidekiq_plan.worker_name %></td>
+        <td><%= sidekiq_plan.jid %></td>
+        <td><%= sidekiq_plan.status %></td>
+        <td><%= link_to 'Show', sidekiq_plan %></td>
+        <td><%= link_to 'Edit', edit_sidekiq_plan_path(sidekiq_plan) %></td>
+        <td><%= link_to 'Destroy', sidekiq_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sidekiq Plan', new_sidekiq_plan_path %>

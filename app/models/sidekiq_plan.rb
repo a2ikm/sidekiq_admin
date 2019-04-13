@@ -1,0 +1,2 @@
+class SidekiqPlan < ApplicationRecord
+end

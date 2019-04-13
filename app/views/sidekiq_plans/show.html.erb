@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @sidekiq_plan.label %>
+</p>
+
+<p>
+  <strong>Worker name:</strong>
+  <%= @sidekiq_plan.worker_name %>
+</p>
+
+<p>
+  <strong>Jid:</strong>
+  <%= @sidekiq_plan.jid %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @sidekiq_plan.status %>
+</p>
+
+<%= link_to 'Edit', edit_sidekiq_plan_path(@sidekiq_plan) %> |
+<%= link_to 'Back', sidekiq_plans_path %>
