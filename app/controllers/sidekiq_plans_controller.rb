@@ -56,6 +56,6 @@ class SidekiqPlansController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sidekiq_plan_params
-      params.require(:sidekiq_plan).permit(:label, :worker_name)
+      params.require(:sidekiq_plan).permit(:label, :worker_name, :perform_at)
     end
 end

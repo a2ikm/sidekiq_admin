@@ -13,7 +13,7 @@ class SidekiqPlan < ApplicationRecord
   end
 
   def enqueue
-    self.jid = worker_class.perform_async(id)
+    self.jid = worker_class.perform_at(perform_at, id)
     waiting!
   end
 end
