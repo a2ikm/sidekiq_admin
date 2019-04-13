@@ -19,5 +19,6 @@ group :development do
   gem 'web-console'
   gem 'listen'
   gem 'spring'
+  gem 'spring-commands-sidekiq'
   gem 'spring-watcher-listen'
 end
