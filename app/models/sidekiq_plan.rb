@@ -16,4 +16,20 @@ class SidekiqPlan < ApplicationRecord
     self.jid = worker_class.perform_at(perform_at, id)
     waiting!
   end
+
+  def started!
+    self.started_at = Time.current
+    super
+  end
+
+  def finished!
+    self.finished_at = Time.current
+    super
+  end
+
+  def failed!
+    self.finished_at = nil
+    self.failed_at = Time.current
+    super
+  end
 end
