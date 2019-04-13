@@ -22,6 +22,8 @@ class SidekiqPlansController < ApplicationController
   # POST /sidekiq_plans
   def create
     @sidekiq_plan = SidekiqPlan.new(sidekiq_plan_params)
+    @sidekiq_plan.jid = 0 # TODO: enqueue
+    @sidekiq_plan.status = :waiting
 
     if @sidekiq_plan.save
       redirect_to @sidekiq_plan, notice: 'Sidekiq plan was successfully created.'
@@ -53,6 +55,6 @@ class SidekiqPlansController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sidekiq_plan_params
-      params.require(:sidekiq_plan).permit(:label, :worker_name, :jid, :status)
+      params.require(:sidekiq_plan).permit(:label, :worker_name)
     end
 end
