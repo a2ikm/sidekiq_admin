@@ -22,10 +22,11 @@ class SidekiqPlansController < ApplicationController
   # POST /sidekiq_plans
   def create
     @sidekiq_plan = SidekiqPlan.new(sidekiq_plan_params)
-    @sidekiq_plan.jid = 0 # TODO: enqueue
-    @sidekiq_plan.status = :waiting
+    @sidekiq_plan.jid = 0
+    @sidekiq_plan.status = :initial
 
     if @sidekiq_plan.save
+      @sidekiq_plan.enqueue
       redirect_to @sidekiq_plan, notice: 'Sidekiq plan was successfully created.'
     else
       render :new
